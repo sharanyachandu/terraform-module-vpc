@@ -53,10 +53,10 @@ resource "aws_route_table_association" "private-rt-association" {
 }
 
 
-# Adding the peering route entry insde the default route-table to access robot network
-#resource "aws_route" "def-vpc-robot-vpc-root" {
- # route_table_id            = var.DEFAULT_VPC_RT
-  #destination_cidr_block    = var.VPC_CIDR
-  #vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
-  #depends_on                = [aws_vpc_peering_connection.peer]
-#}
+ Adding the peering route entry insde the default route-table to access robot network
+resource "aws_route" "def-vpc-robot-vpc-root" {
+route_table_id            = var.DEFAULT_VPC_RT
+destination_cidr_block    = var.VPC_CIDR
+vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
+depends_on                = [aws_vpc_peering_connection.peer]
+}
